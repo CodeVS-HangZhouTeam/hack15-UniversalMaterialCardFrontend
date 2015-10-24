@@ -1,33 +1,10 @@
-element.style {
+.demo-card-wide.mdl-card {
+    margin:30px;
 }
-body {
-    margin: 10px;
+.demo-chart:nth-child(1) {
+    color: #1AA111;
 }
-html, body {
-    font-family: "Helvetica","Arial",sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
+
+.demo-chart:nth-child(2) {
+    color: #3399cc;
 }
-body {
-    width: 100%;
-    min-height: 100%;
-}
-user agent stylesheetbody {
-    display: block;
-    margin: 8px;
-}
-Inherited from html.mdl-js
-html, body {
-    font-family: "Helvetica","Arial",sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-}
-html {
-    color: rgba(0,0,0,.87);
-}
-Pseudo ::selection element
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
