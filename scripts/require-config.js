@@ -7,7 +7,8 @@ require.config({
         mustache: "helper/mustache",
         material: "material/material",
         cardloader: "helper/cardloader",
-        pageloader: "helper/pageloader"
+        pageloader: "helper/pageloader",
+        loadcss: "helper/loadCSS"
     },
     shim: {
         highcharts: {
@@ -26,7 +27,11 @@ require.config({
         pageloader: {
             exports: "pageloader",
             deps: ["jquery", "helper/mustache"]
+        },
+        loadcss: {
+            exports: "loadCSS"
         }
+
     }
 });
 

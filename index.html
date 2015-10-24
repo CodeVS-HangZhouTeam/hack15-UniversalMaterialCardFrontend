@@ -2,18 +2,13 @@
 <html lang="zh-cmn-hans">
 <head>
     <meta charset="UTF-8">
-    <title>Git Education</title>
-    <link rel="stylesheet" href="css/material.min.css">
-    <link rel="stylesheet" href="//cdn.css.net/fonts/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/cards.css">
-    <link rel="stylesheet" href="css/main.css">
+    <title></title>
 </head>
 <body>
-
 <script src="scripts/require.js"></script>
 <script>
     requirejs(['./scripts/require-config'], function (config) {
-        requirejs(['index']);
+        requirejs([location.pathname.split('/').pop().split('.')[0]]);
     });
 </script>
 </body>
