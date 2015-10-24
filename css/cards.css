@@ -32,11 +32,15 @@ Pseudo ::selection element
     background: #b3d4fc;
     text-shadow: none;
   }
-:image-general-status{
+.image-general-status{
   height:300px;
+  width:100px;
   margin:auto;
+  color:#111111;
 }
-:image-used-status{
-  height:300px;
+.image-used-status{
+  height:100px;
+  width:100px;
   margin:auto;
+  color:#999999;
 }
