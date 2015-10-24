@@ -3,10 +3,10 @@ require.config({
     paths: {
         require: "require",
         jquery: "jquery",
-        highcharts: "highcharts",
+        highcharts: "highcharts/highcharts",
         mustache: "helper/mustache",
         material: "material/material",
-        cardloader: "cardloader"
+        cardloader: "helper/cardloader"
     },
     shim: {
         highcharts: {
@@ -24,5 +24,3 @@ require.config({
         }
     }
 });
-
-//requirejs(["jquery", "helper/mustache", "highcharts"], function(jquery, mustache, Highcharts) {});
