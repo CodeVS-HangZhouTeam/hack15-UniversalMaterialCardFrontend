@@ -1,0 +1,13 @@
+{
+  "title": "Git Education",
+  "pages": [
+    {
+      "url": "首页",
+      "name": "index.html"
+    },
+    {
+      "url": "测试页",
+      "name": "debug.html"
+    }
+  ]
+}
