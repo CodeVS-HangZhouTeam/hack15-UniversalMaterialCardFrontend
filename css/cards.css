@@ -1,12 +1,34 @@
 .image-general-status{
-  height:300px;
+  height:180px;
   width:100px;
   margin:auto;
-  color:#111111;
+  background-color: #222222;
 }
 .image-used-status{
   height:100px;
   width:100px;
   margin:auto;
-  color:#999999;
+  background-color: #999999;
+}
+.card_title{
+  color:#000000;
+}
+.demo-chart {
+    color: #ACEC00;
+}
+
+#container-containers{
+  display: flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+
+.label{
+  color: black;
+  background-color: white;
+}
+.imagine-containers{
+  display: flex;
+  flex-direction: row ;
+  align-items: flex-center;
 }
