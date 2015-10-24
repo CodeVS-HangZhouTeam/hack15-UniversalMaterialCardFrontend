@@ -1,0 +1,10 @@
+.demo-card-wide.mdl-card {
+    margin:30px;
+}
+.demo-chart:nth-child(1) {
+    color: #1AA111;
+}
+
+.demo-chart:nth-child(2) {
+    color: #3399cc;
+}
