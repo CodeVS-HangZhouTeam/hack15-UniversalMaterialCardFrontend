@@ -1,0 +1,62 @@
+<!-- Wide card with share menu button -->
+<style>
+    .demo-card-chart.mdl-card {
+        width: 512px;
+        margin: 20px;
+    }
+    .demo-card-chart > .mdl-card__title {
+        color: #fff;
+        height: 176px;
+        #background: blue center / cover;
+    }
+    .demo-card-chart > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+<div class="demo-card-chart mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title" id="chart-container">
+
+    </div>
+    <div class="mdl-card__supporting-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Mauris sagittis pellentesque lacus eleifend lacinia...
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Get Started
+        </a>
+    </div>
+    <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+        </button>
+    </div>
+</div>
+
+<script>
+    var chart = new Highcharts.Chart({
+            chart: {
+                type: 'bar',
+                renderTo: 'chart-container'
+            },
+            title: {
+                text: 'Fruit Consumption'
+            },
+            xAxis: {
+                categories: ['Apples', 'Bananas', 'Oranges']
+            },
+            yAxis: {
+                title: {
+                    text: 'Fruit eaten'
+                }
+            },
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }]
+        });
+</script>
