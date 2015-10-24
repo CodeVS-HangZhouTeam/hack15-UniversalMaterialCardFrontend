@@ -12,7 +12,7 @@
 <script src="scripts/require.js"></script>
 <script>
     requirejs(['./scripts/require-config'], function (config) {
-        requirejs(['debug']);
+        requirejs([location.pathname.split('/').pop().split('.')[0]]);
     });
 </script>
 </body>
