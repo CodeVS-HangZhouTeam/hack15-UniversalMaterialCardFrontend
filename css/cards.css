@@ -1,10 +1,12 @@
-.demo-card-wide.mdl-card {
-    margin:30px;
+.image-general-status{
+  height:300px;
+  width:100px;
+  margin:auto;
+  color:#111111;
 }
-.demo-chart:nth-child(1) {
-    color: #1AA111;
-}
-
-.demo-chart:nth-child(2) {
-    color: #3399cc;
+.image-used-status{
+  height:100px;
+  width:100px;
+  margin:auto;
+  color:#999999;
 }
