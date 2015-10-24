@@ -32,3 +32,28 @@
   flex-direction: row ;
   align-items: flex-center;
 }
+.cpu-general-status{
+  height:70px;
+  width: 450px;
+  margin:20px;
+  background-color: #222222;
+}
+.cpu-used-status{
+  height:70px;
+  width: 300px;
+  margin:0;
+  background-color: #999999;
+}
+
+.memory-general-status{
+  height:70px;
+  width: 450px;
+  margin:20px;
+  background-color: #222222;
+}
+.memory-used-status{
+  height:70px;
+  width: 300px;
+  margin:0;
+  background-color: #999999;
+}
