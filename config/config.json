@@ -1,17 +1,13 @@
 {
   "title": "Git Education",
-  "global": {
-    "css": ["material.min", "//cdn.css.net/fonts/icon?family=Material+Icons", "cards"]
-  },
   "pages": [
     {
       "name": "首页",
-      "url": "index",
-      "css": ["main"]
+      "url": "index.html"
     },
     {
       "name": "测试页",
-      "url": "debug"
+      "url": "debug.html"
     }
   ]
 }
