@@ -31,3 +31,12 @@ Pseudo ::selection element
 ::selection {
     background: #b3d4fc;
     text-shadow: none;
+  }
+:image-general-status{
+  height:300px;
+  margin:auto;
+}
+:image-used-status{
+  height:300px;
+  margin:auto;
+}
