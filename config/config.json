@@ -3,11 +3,11 @@
   "pages": [
     {
       "name": "首页",
-      "url": "index.html"
+      "url": "index"
     },
     {
       "name": "测试页",
-      "url": "debug.html"
+      "url": "debug"
     }
   ]
 }
