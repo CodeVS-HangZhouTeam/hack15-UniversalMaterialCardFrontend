@@ -1,11 +1,8 @@
 <div class="page-framework mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Git Education</span>
+        <span class="mdl-layout-title">{{ title }}</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">状态</a>
-            <a class="mdl-navigation__link" href="">作业</a>
-            <a class="mdl-navigation__link" href="">评测</a>
-            <a class="mdl-navigation__link" href="">设置</a>
+            {{#pages}}<a class="mdl-navigation__link" href="{{ url }}">{{ name }}</a>{{/pages}}
         </nav>
     </div>
     <main class="mdl-layout__content">

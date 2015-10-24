@@ -2,12 +2,12 @@
   "title": "Git Education",
   "pages": [
     {
-      "url": "首页",
-      "name": "index.html"
+      "name": "首页",
+      "url": "index.html"
     },
     {
-      "url": "测试页",
-      "name": "debug.html"
+      "name": "测试页",
+      "url": "debug.html"
     }
   ]
 }
