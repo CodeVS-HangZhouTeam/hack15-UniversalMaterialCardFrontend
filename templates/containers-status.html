@@ -1,0 +1,90 @@
+<!-- Wide card with share menu button -->
+<style>
+    .demo-card-chart.mdl-card {
+        width: 512px;
+        margin: 20px;
+    }
+    .demo-card-chart > .mdl-card__title {
+        color: #fff;
+        #height: 176px;
+        #background: blue center / cover;
+    }
+    .demo-card-chart > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+<div class="demo-card-chart mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title" id="chart-containers-status">
+
+    </div>
+    <div class="mdl-card__supporting-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Mauris sagittis pellentesque lacus eleifend lacinia...
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Get Started
+        </a>
+    </div>
+    <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+        </button>
+    </div>
+</div>
+
+<script>
+
+// Radialize the colors
+Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+    return {
+        radialGradient: {
+            cx: 0.5,
+            cy: 0.3,
+            r: 0.7
+        },
+        stops: [
+            [0, color],
+            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+        ]
+    };
+});
+
+    var chart = new Highcharts.Chart({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie',
+            renderTo: "chart-containers-status"
+        },
+        title: {
+            text: '容器状态'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    },
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            name: "Brands",
+            data: [
+                {name: "已用容器", y: 24},
+                {name: "可用容器", y: 14},
+            ]
+        }]
+    });
+</script>
