@@ -26,21 +26,26 @@
 <script type="application/json" id="homework-status-card-data"></script>
 
 <script>
-    $.getJSON("http://h15.swineson.cn:18880/query/all", function(json) {
+    $.getJSON("http://h15.swineson.cn:18880/query/all", function (json) {
         var result = {
+            title: json.meta.title,
+            total: json.meta.user_total,
             correct: 0,
             error_count: 0,
             error: {},
             notsubmitted: 0
         };
-        json.d.forEach(function(x){
-            if (!x.iserror) { result.correct++; }
+        json.d.forEach(function (x) {
+            if (!x.iserror) {
+                result.correct++;
+            }
             else {
                 result.error_count++;
                 if (typeof result.error[x.error] === "undefined") result.error[x.error] = 1;
                 else result.error[x.error]++;
             }
         });
+        result.notsubmitted = result.total - result.correct - result.error_count;
         var colors = Highcharts.getOptions().colors,
                 categories = ['正确', '错误', '未提交'],
                 data = [{
@@ -53,15 +58,6 @@
                         color: "lightgreen"
                     }
                 }, {
-                    y: result.error_count,
-                    color: "red",
-                    drilldown: {
-                        name: '错误',
-                        categories: Object.keys(result.error),
-                        data: Object.keys(result.error).map(function(key){return result.error[key];}),
-                        color: colors[0]
-                    }
-                }, {
                     y: result.notsubmitted,
                     color: "grey",
                     drilldown: {
@@ -69,6 +65,17 @@
                         categories: ['未提交'],
                         data: [result.notsubmitted],
                         color: "grey"
+                    }
+                }, {
+                    y: result.error_count,
+                    color: "red",
+                    drilldown: {
+                        name: '错误',
+                        categories: Object.keys(result.error),
+                        data: Object.keys(result.error).map(function (key) {
+                            return result.error[key];
+                        }),
+                        color: colors[0]
                     }
                 }],
                 browserData = [],
@@ -108,7 +115,7 @@
                 renderTo: 'homework-status-card-chart'
             },
             title: {
-                text: ''
+                text: result.title
             },
             yAxis: {
                 title: {
