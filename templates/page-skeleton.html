@@ -1,8 +1,8 @@
 <div class="page-framework mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-    <div class="mdl-layout__drawer">
+    <div class="mdl-layout__drawer" style="width: 192px">
         <span class="mdl-layout-title">{{ title }}</span>
         <nav class="mdl-navigation">
-            {{#pages}}<a class="mdl-navigation__link" href="{{ url }}.html">{{#icon}}<i class="material-icons">{{ icon }}</i>{{/icon}}{{^icon}}{{ name }}{{/icon}}</a>{{/pages}}
+            {{#pages}}<a class="mdl-navigation__link" style="margin-left: -64px" href="{{ url }}.html">{{#icon}}<i class="material-icons" style="position: relative; top: 7px; left: -12px">{{ icon }}</i>{{/icon}}{{ name }}</a>{{/pages}}
         </nav>
     </div>
     <main class="mdl-layout__content">
