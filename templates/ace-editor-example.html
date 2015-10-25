@@ -1,0 +1,29 @@
+<style>
+    .demo-card-chart.mdl-card {
+        width: 512px;
+        margin: 20px;
+    }
+    .demo-card-chart > .mdl-card__title {
+        color: #fff;
+        #height: 256px;
+        #background: blue center / cover;
+    }
+    .demo-card-chart > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+<div class="demo-card-chart mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title" id="chart-container">
+        <a class="card_title">处理器状态</a>
+    </div>
+    <div class="editor">
+
+    </div>
+</div>
+
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+</script>
