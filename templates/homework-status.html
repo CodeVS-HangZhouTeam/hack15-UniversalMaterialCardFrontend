@@ -68,14 +68,14 @@
                     }
                 }, {
                     y: result.error_count,
-                    color: "orange",
+                    color: "lightcoral",
                     drilldown: {
                         name: '错误',
                         categories: Object.keys(result.error),
                         data: Object.keys(result.error).map(function (key) {
                             return result.error[key];
                         }),
-                        color: colors[0]
+                        color: "lightcoral"
                     }
                 }],
                 browserData = [],
