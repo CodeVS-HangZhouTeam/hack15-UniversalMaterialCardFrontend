@@ -1,0 +1,136 @@
+<style>
+    .homework-status-card.mdl-card {
+        width: 512px;
+        margin: 20px;
+    }
+    .homework-status-card > .mdl-card__title {
+        color: #fff;
+        #height: 256px;
+        #background: blue center / cover;
+    }
+    .homework-status-card > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+<div class="homework-status-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title" id="chart-container">
+        <a class="card_title">作业提交状态</a>
+    </div>
+    <div id="homework-status-card-chart">
+
+    </div>
+</div>
+
+<script>
+        var colors = Highcharts.getOptions().colors,
+                categories = ['正确', '错误', '未提交'],
+                data = [{
+                    y: 0.5,
+                    color: colors[2],
+                    drilldown: {
+                        name: '正确',
+                        categories: ['正确'],
+                        data: [0.5],
+                        color: colors[2]
+                    }
+                }, {
+                    y: 0.4,
+                    color: colors[0],
+                    drilldown: {
+                        name: '错误',
+                        categories: ['Fuck', 'Shit', 'Damn it'],
+                        data: [0.1, 0.2, 0.1],
+                        color: colors[0]
+                    }
+                }, {
+                    y: 0.1,
+                    color: colors[1],
+                    drilldown: {
+                        name: '未提交',
+                        categories: ['未提交'],
+                        data: [0.1],
+                        color: colors[1]
+                    }
+                }],
+                browserData = [],
+                versionsData = [],
+                i,
+                j,
+                dataLen = data.length,
+                drillDataLen,
+                brightness;
+
+
+        // Build the data arrays
+        for (i = 0; i < dataLen; i += 1) {
+
+            // add browser data
+            browserData.push({
+                name: categories[i],
+                y: data[i].y,
+                color: data[i].color
+            });
+
+            // add version data
+            drillDataLen = data[i].drilldown.data.length;
+            for (j = 0; j < drillDataLen; j += 1) {
+                brightness = 0.2 - (j / drillDataLen) / 5;
+                versionsData.push({
+                    name: data[i].drilldown.categories[j],
+                    y: data[i].drilldown.data[j],
+                    color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                });
+            }
+        }
+
+        var chart = new Highcharts.Chart({
+            chart: {
+                type: 'pie',
+                renderTo: 'homework-status-card-chart'
+            },
+            title: {
+                text: ''
+            },
+            yAxis: {
+                title: {
+                    text: '评测结果'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    shadow: true,
+                    center: ['50%', '50%']
+                }
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            series: [{
+                name: '比例',
+                data: browserData,
+                size: '60%',
+                dataLabels: {
+                    formatter: function () {
+                        //return this.y > 5 ? this.point.name : null;
+                        //return this.point.name;
+                        return null;
+                    },
+                    color: '#ffffff',
+                    distance: -30
+                }
+            }, {
+                name: '比例',
+                data: versionsData,
+                size: '80%',
+                innerSize: '60%',
+                dataLabels: {
+                    formatter: function () {
+                        // display only if larger than 1
+                        //return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+                        return '<b>' + this.point.name + ':</b> ' + this.y + '%';
+                    }
+                }
+            }]
+        });
+</script>
