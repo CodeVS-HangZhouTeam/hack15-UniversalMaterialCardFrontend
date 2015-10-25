@@ -16,11 +16,6 @@
       "name": "代码查看",
       "url": "ci-view",
       "icon": "ic_code"
-    },
-    {
-      "name": "测试页",
-      "url": "debug",
-      "icon": "ic_bug_report"
     }
   ]
 }
