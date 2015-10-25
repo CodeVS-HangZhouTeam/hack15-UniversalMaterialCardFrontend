@@ -45,16 +45,16 @@
                 categories = ['正确', '错误', '未提交'],
                 data = [{
                     y: result.correct,
-                    color: colors[2],
+                    color: "lightgreen",
                     drilldown: {
                         name: '正确',
                         categories: ['正确'],
                         data: [result.correct],
-                        color: colors[2]
+                        color: "lightgreen"
                     }
                 }, {
                     y: result.error_count,
-                    color: colors[0],
+                    color: "red",
                     drilldown: {
                         name: '错误',
                         categories: Object.keys(result.error),
@@ -63,12 +63,12 @@
                     }
                 }, {
                     y: result.notsubmitted,
-                    color: colors[1],
+                    color: "grey",
                     drilldown: {
                         name: '未提交',
                         categories: ['未提交'],
                         data: [result.notsubmitted],
-                        color: colors[1]
+                        color: "grey"
                     }
                 }],
                 browserData = [],
