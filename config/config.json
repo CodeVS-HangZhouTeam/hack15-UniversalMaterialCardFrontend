@@ -1,12 +1,12 @@
 {
-  "title": "Git Education",
+  "title": "Docker Monitor",
   "pages": [
     {
-      "name": "首页",
+      "name": "Dashboard",
       "url": "index"
     },
     {
-      "name": "测试页",
+      "name": "Manager",
       "url": "debug"
     }
   ]
