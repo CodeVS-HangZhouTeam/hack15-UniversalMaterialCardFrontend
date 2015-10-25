@@ -1,15 +1,21 @@
 {
   "title": "Git Education",
   "pages": [
+
     {
       "name": "首页",
       "url": "index",
       "icon": "ic_home"
     },
     {
-      "name": "作业提交",
+      "name": "作业状态",
       "url": "teacher-dashboard",
       "icon": "ic_library_books"
+    },
+    {
+      "name": "代码查看",
+      "url": "ci-view",
+      "icon": "ic_code"
     },
     {
       "name": "测试页",

@@ -1,0 +1,32 @@
+<style>
+    .ci-fail {
+        background: lightcoral;
+    }
+    .ci-succ {
+        background: lightgreen;
+    }
+    pre {
+        font-family: Monaco, monospace;
+    }
+    .mdl-card__supporting-text b {
+        font-size: larger;
+    }
+</style>
+
+<div id="ci-card-{{ id }}" class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: calc(100% - 48px)">
+    <div class="mdl-card__title {{#iserror}}ci-fail{{/iserror}}{{^iserror}}ci-succ{{/iserror}}">
+        <h2 class="mdl-card__title-text">({{ id }}) {{ user }}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        {{#iserror}}<p>Error: {{ error }}</p>{{/iserror}}
+        <b>stdout</b>
+        <pre>{{ stdout }}</pre>
+        <b>stderr</b>
+        <pre>{{ stderr }}</pre>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ url }}" target="_blank">
+            查看代码
+        </a>
+    </div>
+</div>
