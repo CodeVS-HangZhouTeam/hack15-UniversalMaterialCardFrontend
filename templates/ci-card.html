@@ -5,11 +5,12 @@
     .ci-succ {
         background: lightgreen;
     }
-    pre {
+    .mdl-card__supporting-text pre {
         font-family: Monaco, monospace;
+        font-size: 16px;
     }
     .mdl-card__supporting-text b {
-        font-size: larger;
+        font-size: 16px;
     }
 </style>
 
@@ -18,10 +19,10 @@
         <h2 class="mdl-card__title-text">({{ id }}) {{ user }}</h2>
     </div>
     <div class="mdl-card__supporting-text">
-        {{#iserror}}<p>Error: {{ error }}</p>{{/iserror}}
-        <b>stdout</b>
+        {{#iserror}}<p><b>错误：{{ error }}</b></p>{{/iserror}}
+        <p><b>程序 stdout 输出：</b></p>
         <pre>{{ stdout }}</pre>
-        <b>stderr</b>
+        </p><b>程序 stderr 输出：</b></p>
         <pre>{{ stderr }}</pre>
     </div>
     <div class="mdl-card__actions mdl-card--border">
