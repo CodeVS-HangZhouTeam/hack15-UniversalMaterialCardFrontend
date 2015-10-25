@@ -45,7 +45,7 @@
                 else result.error[x.error]++;
             }
         });
-        result.notsubmitted = result.total - result.correct - result.error_count;
+        result.notsubmitted = 1; //result.total - result.correct - result.error_count;
         var colors = Highcharts.getOptions().colors,
                 categories = ['正确', '错误', '未提交'],
                 data = [{
@@ -68,7 +68,7 @@
                     }
                 }, {
                     y: result.error_count,
-                    color: "red",
+                    color: "orange",
                     drilldown: {
                         name: '错误',
                         categories: Object.keys(result.error),

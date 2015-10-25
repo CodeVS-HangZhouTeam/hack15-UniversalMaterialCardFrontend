@@ -3,15 +3,18 @@
   "pages": [
     {
       "name": "首页",
-      "url": "index"
+      "url": "index",
+      "icon": "ic_home"
     },
     {
       "name": "作业提交",
-      "url": "teacher-dashboard"
+      "url": "teacher-dashboard",
+      "icon": "ic_library_books"
     },
     {
       "name": "测试页",
-      "url": "debug"
+      "url": "debug",
+      "icon": "ic_bug_report"
     }
   ]
 }
