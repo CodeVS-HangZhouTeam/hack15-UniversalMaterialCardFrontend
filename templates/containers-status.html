@@ -1,40 +1,121 @@
 <!-- Wide card with share menu button -->
 <style>
-    .demo-card-chart.mdl-card {
+    .containers-status.mdl-card {
         width: 512px;
+        height: 486px;
         margin: 20px;
     }
-    .demo-card-chart > .mdl-card__title {
-        color: #fff;
-        #height: 176px;
-        #background: blue center / cover;
-    }
-    .demo-card-chart > .mdl-card__menu {
-        color: #fff;
+
+    .containers-status .highcharts-series-0 {
+        display: none;
     }
 </style>
 
-<div class="demo-card-chart mdl-card mdl-shadow--2dp">
+<div class="containers-status mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title" id="chart-containers-status">
-      <a class="card_title">容器状态</a>
+        <a class="card_title">容器状态</a>
     </div>
-    <div id=container-containers>
-    <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#piechart" mask="url(#piemask)"></use>
-      <text x="0.5" y="0.5" font-family="Helvetica" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">可用</tspan></text>
-    </svg>
-    <a class="label">总计: 145</a>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
-        <defs>
-          <mask id="piemask" maskContentUnits="objectBoundingBox">
-            <circle cx="0.5" cy="0.5" r="0.49" fill="white"></circle>
-            <circle cx="0.5" cy="0.5" r="0.40" fill="black"></circle>
-          </mask>
-          <g id="piechart">
-            <circle cx="0.5" cy="0.5" r="0.5"></circle>
-            <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)"></path>
-          </g>
-        </defs>
-      </svg>
-  </div>
+    <div id="container-chart">
+
+    </div>
 </div>
+
+<script>
+
+    var colors = Highcharts.getOptions().colors,
+            categories = ['已用', '可用'],
+            data = [{
+                y: 1,
+                color: colors[0],
+                drilldown: {
+                    name: 'Used',
+                    categories: ['Used'],
+                    data: [0.66],
+                    color: '#00ff00'
+                }
+            }, {
+                y: 1,
+                color: colors[1],
+                drilldown: {
+                    name: 'Used',
+                    categories: ['Free'],
+                    data: [0.33],
+                    color: '#00ff00'
+                }
+            }],
+            browserData = [],
+            versionsData = [],
+            i,
+            j,
+            dataLen = data.length,
+            drillDataLen,
+            brightness;
+
+
+    // Build the data arrays
+    for (i = 0; i < dataLen; i += 1) {
+
+        // add browser data
+        browserData.push({
+            name: categories[i],
+            y: data[i].y,
+            color: data[i].color
+        });
+
+        // add version data
+        drillDataLen = data[i].drilldown.data.length;
+        for (j = 0; j < drillDataLen; j += 1) {
+            brightness = 0.2 - (j / drillDataLen) / 5;
+            versionsData.push({
+                name: data[i].drilldown.categories[j],
+                y: data[i].drilldown.data[j],
+                color: Highcharts.Color(data[i].color).brighten(brightness).get()
+            });
+        }
+    }
+
+    // Create the chart
+    var chart = new Highcharts.Chart({
+        chart: {
+            type: 'pie',
+            renderTo: "container-chart"
+        },
+        title: {
+            text: null
+        },
+        yAxis: {
+            title: {
+                text: 'Total percent market share'
+            }
+        },
+        plotOptions: {
+            pie: {
+                shadow: false,
+                center: ['50%', '50%']
+            }
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        series: [{
+            name: 'Browsers',
+            data: browserData,
+            size: '60%',
+            color: '#000000',
+            dataLabels: {
+
+            }
+        }, {
+            name: '使用状况',
+            data: versionsData,
+            size: '80%',
+            innerSize: '60%',
+            dataLabels: {
+                formatter: function () {
+                    // display only if larger than 1
+                    return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+                }
+            }
+        }]
+    });
+</script>

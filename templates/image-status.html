@@ -4,65 +4,80 @@
         width: 512px;
         margin: 20px;
     }
+
     .demo-card-chart > .mdl-card__title {
         color: #fff;
         #height: 256px;
         #background: blue center / cover;
     }
+
     .demo-card-chart > .mdl-card__menu {
         color: #fff;
     }
+
+    .image-status  .highcharts-yaxis-title {
+        display: none;
+    }
 </style>
 
-<div class="demo-card-chart mdl-card mdl-shadow--2dp">
+<div class="image-status mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title" id="chart-container">
-    <a class="card_title">镜像状态</a>
+        <a class="card_title">镜像状态</a>
     </div>
 
     <div class="mdl-card__supporting-text">
 
-      <div class="imagine-containers">
-        <div class="image-general-status label">
-          <div class="image-used-status label" >
-            <a class="label">空闲：15</a>
-          </div>
-          <a class="label">使用：10</a>
+        <div id="imagine-containers">
         </div>
-
-
-      <div class="image-general-status">
-        <div class="image-used-status">
-        </div>
-      </div>
 
     </div>
 
-  </div>
-<!--
+</div>
+
 <script>
     var chart = new Highcharts.Chart({
-            chart: {
-                type: 'bar',
-                renderTo: 'chart-container'
+        chart: {
+            type: 'column',
+            renderTo: 'imagine-containers'
+        },
+        title: {
+            text: null
+        },
+        plotOptions: {
+            column: {
+                stacking: 'percent'
+            }
+        },
+        xAxis: {
+            lineWidth: 0,
+            minorGridLineWidth: 0,
+            lineColor: 'transparent',
+            labels: {
+                enabled: false
             },
-            title: {
-                text: 'Fruit Consumption'
+            minorTickLength: 0,
+            tickLength: 0
+        },
+        yAxis: {
+            lineWidth: 0,
+            minorGridLineWidth: 0,
+            lineColor: 'transparent',
+            labels: {
+                enabled: false
             },
-            xAxis: {
-                categories: ['Apples', 'Bananas', 'Oranges']
-            },
-            yAxis: {
-                title: {
-                    text: 'Fruit eaten'
-                }
-            },
-            series: [{
-                name: 'Jane',
-                data: [1, 0, 4]
-            }, {
-                name: 'John',
-                data: [5, 7, 3]
-            }]
-        });
+            minorTickLength: 0,
+            tickLength: 0,
+            gridLineColor: 'transparent'
+        },
+        series: [{
+            name: '已用',
+            data: [15],
+            stack: 'mirror-num'
+        }, {
+            name: '可用',
+            data: [10],
+            stack: 'mirror-num'
+        }]
+    });
 </script>
--->
+

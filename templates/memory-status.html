@@ -1,27 +1,68 @@
 <!-- Wide card with share menu button -->
 <style>
-    .demo-card-chart.mdl-card {
+    .memory-status.mdl-card {
         width: 512px;
         margin: 20px;
     }
-    .demo-card-chart > .mdl-card__title {
-        color: #fff;
-        #height: 256px;
-        #background: blue center / cover;
-    }
-    .demo-card-chart > .mdl-card__menu {
-        color: #fff;
+    .memory-status .highcharts-yaxis-title {
+        display: none;
     }
 </style>
 
-<div class="demo-card-chart mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title" id="chart-container">
-  <a class="card_title">内存状态</a>
-  </div>
-    <div class="memory-containers">
-        <div class="memory-general-status label">
-          <div class="memory-used-status label" >
-          </div>
-        </div>
+<div class="memory-status mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title" id="chart-containers-status">
+        <a class="card_title">内存状态</a>
     </div>
-  </div>
+    <div id="memory-chart">
+
+    </div>
+</div>
+
+<script>
+    var chart = new Highcharts.Chart({
+        chart: {
+            type: 'bar',
+            renderTo: 'memory-chart'
+        },
+        title: {
+            text: null
+        },
+        plotOptions: {
+            bar: {
+                stacking: 'percent'
+            }
+        },
+        xAxis: {
+            lineWidth: 0,
+            minorGridLineWidth: 0,
+            lineColor: 'transparent',
+            labels: {
+                enabled: false
+            },
+            minorTickLength: 0,
+            tickLength: 0,
+            gridLineColor: 'transparent'
+        },
+        yAxis: {
+            lineWidth: 0,
+            minorGridLineWidth: 0,
+            lineColor: 'transparent',
+            labels: {
+                enabled: false
+            },
+            minorTickLength: 0,
+            tickLength: 0,
+            gridLineColor: 'transparent'
+        },
+        series: [{
+            name: '已用',
+            data: [15],
+            stack: 'mirror-num'
+        }, {
+            name: '可用',
+            data: [10],
+            stack: 'mirror-num'
+        }]
+    });
+</script>
+
