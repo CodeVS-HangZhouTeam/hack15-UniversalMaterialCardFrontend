@@ -1,3 +1,3 @@
 requirejs(["cardloader"], function(cardloader) {
-    cardloader.loadCard(".page-content", "homework-status", {});
+    cardloader.loadCard(".page-content", "homework-status", "");
 });

@@ -1,13 +1,15 @@
 <style>
     .homework-status-card.mdl-card {
-        width: 512px;
+        width: calc(100% - 40px);
         margin: 20px;
     }
+
     .homework-status-card > .mdl-card__title {
         color: #fff;
         #height: 256px;
         #background: blue center / cover;
     }
+
     .homework-status-card > .mdl-card__menu {
         color: #fff;
     }
@@ -21,35 +23,51 @@
 
     </div>
 </div>
+<script type="application/json" id="homework-status-card-data"></script>
 
 <script>
+    $.getJSON("http://h15.swineson.cn:18880/query/all", function(json) {
+        var result = {
+            correct: 0,
+            error_count: 0,
+            error: {},
+            notsubmitted: 0
+        };
+        json.d.forEach(function(x){
+            if (!x.iserror) { result.correct++; }
+            else {
+                result.error_count++;
+                if (typeof result.error[x.error] === "undefined") result.error[x.error] = 1;
+                else result.error[x.error]++;
+            }
+        });
         var colors = Highcharts.getOptions().colors,
                 categories = ['正确', '错误', '未提交'],
                 data = [{
-                    y: 0.5,
+                    y: result.correct,
                     color: colors[2],
                     drilldown: {
                         name: '正确',
                         categories: ['正确'],
-                        data: [0.5],
+                        data: [result.correct],
                         color: colors[2]
                     }
                 }, {
-                    y: 0.4,
+                    y: result.error_count,
                     color: colors[0],
                     drilldown: {
                         name: '错误',
-                        categories: ['Fuck', 'Shit', 'Damn it'],
-                        data: [0.1, 0.2, 0.1],
+                        categories: Object.keys(result.error),
+                        data: Object.keys(result.error).map(function(key){return result.error[key];}),
                         color: colors[0]
                     }
                 }, {
-                    y: 0.1,
+                    y: result.notsubmitted,
                     color: colors[1],
                     drilldown: {
                         name: '未提交',
                         categories: ['未提交'],
-                        data: [0.1],
+                        data: [result.notsubmitted],
                         color: colors[1]
                     }
                 }],
@@ -104,10 +122,10 @@
                 }
             },
             tooltip: {
-                valueSuffix: '%'
+                valueSuffix: ''
             },
             series: [{
-                name: '比例',
+                name: '人数',
                 data: browserData,
                 size: '60%',
                 dataLabels: {
@@ -120,7 +138,7 @@
                     distance: -30
                 }
             }, {
-                name: '比例',
+                name: '人数',
                 data: versionsData,
                 size: '80%',
                 innerSize: '60%',
@@ -128,9 +146,11 @@
                     formatter: function () {
                         // display only if larger than 1
                         //return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
-                        return '<b>' + this.point.name + ':</b> ' + this.y + '%';
+                        return '<b>' + this.point.name + ':</b> ' + this.y;
                     }
                 }
             }]
         });
+    });
+
 </script>

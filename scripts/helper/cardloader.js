@@ -9,7 +9,7 @@ define(["jquery", "helper/mustache", "highcharts"], function (jquery, mustache, 
         },
         loadCardFromJSON: function(destination, template_name, url) {
             jquery.getJSON(url, function(json) {
-                cardloader.loadCard(destination, template_name, json);
+                cardloader.loadCard(destination, template_name, JSON.stringify(json));
             });
         }
 
