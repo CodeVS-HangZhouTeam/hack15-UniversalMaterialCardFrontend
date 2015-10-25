@@ -1,3 +1,3 @@
 requirejs(["cardloader"], function(cardloader) {
-    cardloader.loadCard(".page-content", "demo-card-with-highcharts", {});
+    location.href = "./teacher-dashboard.html"
 });
